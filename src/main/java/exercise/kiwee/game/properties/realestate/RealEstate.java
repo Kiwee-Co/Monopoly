@@ -8,7 +8,7 @@ import exercise.kiwee.game.properties.Property;
 abstract class RealEstate extends Property {
     protected int cost;
     protected int rent;
-
+    
     protected int houses;
     protected boolean hotel;
 
@@ -29,5 +29,4 @@ abstract class RealEstate extends Property {
         
         return rent * houses;
     }
-    
 }

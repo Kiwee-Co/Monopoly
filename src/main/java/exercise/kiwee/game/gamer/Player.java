@@ -7,11 +7,18 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Player {
+    private static final int STARTING_FUND = 2000;
+    
     private String name;
     private PlayerStatus status;
-
+    
+    private int fund;
+    private int position;
+    
     public Player(String name) {
         this.name = name;
+        this.position = 0;
+        this.fund = STARTING_FUND;
     }
 
     public String getName() {
@@ -30,6 +37,22 @@ public class Player {
         this.status = status;
     }
 
+    public int getFund() {
+        return fund;
+    }
+
+    public void setFund(int fund) {
+        this.fund = fund;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name, status);
@@ -45,12 +68,13 @@ public class Player {
         }
         Player other = (Player) obj;
 
-        return new EqualsBuilder().append(this.name, other.name).append(this.status, other.status).isEquals();
+        return new EqualsBuilder().append(this.name, other.name).append(this.status, other.status).append(this.fund, fund).append(this.position, position).isEquals();
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("name", name).append("status", status).toString();
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).append("name", name).append("status", status)
+                .append("fund", fund).append("position", position).toString();
     }
 
     public enum PlayerStatus {
